@@ -14,8 +14,7 @@ __Author__ = '阿强'
 def register(code):
     appid = current_app.config['WX_APPID']
     app_secret = current_app.config['APP_SECRET']
-    login_url = current_app.config['LOGIN_URL'] + "?appid=" + appid + "&secret=" + app_secret + "&js_code=" + \
-                code + "&grant_type=authorization_code"
+    login_url = current_app.config['LOGIN_URL'].format(appid, app_secret, code)
     uid_token = __http_to_wx(login_url)
     return uid_token
 
